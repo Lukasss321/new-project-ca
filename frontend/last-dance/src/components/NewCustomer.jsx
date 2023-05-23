@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 export const NewCustomer = () => {
   return (
     <div style={{ display: "block", width: 700, padding: 30 }}>
-      <h4>Please enter customer's details</h4>
+      <h1>Please enter customer's details</h1>
       <Form>
         <Form.Group>
           <Form.Label>Enter client's first name:</Form.Label>
