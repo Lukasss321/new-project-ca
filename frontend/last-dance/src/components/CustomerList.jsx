@@ -1,23 +1,52 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { CustomerItem } from "./CustomerItem";
 import { useState } from "react";
 import axios from "axios";
 
 export const CustomerList = () => {
-  const [custPosts, setCustPosts] = useState();
+  const [custPosts, setCustPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
+  const fetchCustomers = useCallback(() => {
+    console.log("custPosts", custPosts);
     axios
       .get("http://localhost:5000/post")
       .then((response) => {
         setCustPosts(response.data);
         setIsLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
-  console.log("custPosts", custPosts);
+  const handleDelete = useCallback(
+    (id) => {
+      console.log("SHIEEET", id);
+
+      // Atkomentuot kai bus sukurtas delete API
+
+      // setIsLoading(true);
+
+      axios
+        .delete(`https://localhost:5000/post/delete/${id}`)
+        .then(() => {
+          fetchCustomers();
+        })
+        .catch(console.log)
+        .finally(() => {
+          setIsLoading(false);
+        });
+    },
+    [fetchCustomers]
+  );
+
+  useEffect(() => {
+    if (!custPosts.length) {
+      fetchCustomers();
+    }
+  }, [fetchCustomers, custPosts]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -26,7 +55,7 @@ export const CustomerList = () => {
   return (
     <ul>
       {custPosts.map((custPost) => (
-        <CustomerItem post={custPost} />
+        <CustomerItem post={custPost} onDeleteClick={handleDelete} />
       ))}
     </ul>
   );
@@ -34,5 +63,4 @@ export const CustomerList = () => {
 
 export default CustomerList;
 {
-  /* <CustomerItem /> */
 }

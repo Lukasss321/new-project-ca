@@ -14,13 +14,27 @@ router.post("/post", (req, res) => {
 
   const postQuery = "INSERT INTO post (title, text, image) VALUES (?, ?, ?)";
 
-  dbConnection.execute(
-    postQuery,
-    [title, text, image], 
-    (err, result) => {
-      defaultCallback(err, result, res);
-    }
-  );
+  dbConnection.execute(postQuery, [title, text, image], (err, result) => {
+    defaultCallback(err, result, res);
+  });
+});
+
+// router.delete("/post/delete/:id", (req, res) => {
+//   const id = req.params.id * 1;
+//   const deleteQuery = "DELETE FROM post WHERE id = ?";
+
+//   res.send("Post deleted successfully");
+
+//   // Istrinti is DB pagal id/ logika istrint is duomenu bazes
+// });
+
+router.delete("/post/:id", (req, res) => {
+  const { id } = req.params;
+  const deleteQuery = "DELETE FROM post WHERE id = ?";
+
+  dbConnection.execute(deleteQuery, [id], (err, result) => {
+    defaultCallback(err, result, res);
+  });
 });
 
 module.exports = router;

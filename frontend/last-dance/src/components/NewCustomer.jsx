@@ -6,6 +6,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const NewCustomer = () => {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     title: "",
     text: "",
@@ -23,17 +25,18 @@ export const NewCustomer = () => {
     e.preventDefault();
     axios
       .post("http://localhost:5000/post", form)
-      .then((response) => console.log("successfull response", response))
+      .then((response) => navigate("/customer-list"))
       .catch((err) => console.group("err", err));
-    alert("Customer's contact has been successfully added!");
   };
 
   return (
     <div style={{ display: "block", width: 700, padding: 30 }}>
-      <h1>Please enter customer's details</h1>
+      <h1>Please enter customer's details:</h1>
       <Form onSubmit={handleOnSubmit}>
         <Form.Group>
-          <Form.Label>Enter client's full name:</Form.Label>
+          <Form.Label>
+            <h4>Enter client's full name:</h4>
+          </Form.Label>
           <Form.Control
             onChange={handleChange}
             name="title"
@@ -42,7 +45,9 @@ export const NewCustomer = () => {
           />
         </Form.Group>
         <Form.Group>
-          <Form.Label>Enter client's e-mail address:</Form.Label>
+          <Form.Label>
+            <h4>Enter client's e-mail address:</h4>
+          </Form.Label>
           <Form.Control
             onChange={handleChange}
             name="text"
@@ -51,7 +56,9 @@ export const NewCustomer = () => {
           />
         </Form.Group>
         <Form.Group>
-          <Form.Label>Enter email address:</Form.Label>
+          <Form.Label>
+            <h4>Enter client's phone number:</h4>
+          </Form.Label>
           <Form.Control
             onChange={handleChange}
             name="image"

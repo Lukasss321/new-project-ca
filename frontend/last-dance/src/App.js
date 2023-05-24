@@ -5,12 +5,27 @@ import { NewCustomer } from "./components/NewCustomer";
 
 function App() {
   return (
-    <Routes>
-      <Route element={<CustomerList />} path="/" />
-      <Route element={<NewCustomer />} path="/add" />
-    </Routes>
+    <>
+      <nav>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <ul>
+          <li>
+            <a href="/customer-list">Customer list</a>
+          </li>
+          <li>
+            <a href="/">Add customer</a>
+          </li>
+        </ul>
+      </nav>
+
+      <Routes>
+        <Route element={<CustomerList />} path="/customer-list" />
+        <Route element={<NewCustomer />} path="/" />
+      </Routes>
+    </>
   );
 }
 
 export default App;
-//  <CustomerList />;
