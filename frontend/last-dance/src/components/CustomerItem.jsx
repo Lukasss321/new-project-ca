@@ -1,16 +1,20 @@
 import { Card, Button } from "react-bootstrap";
 
-export const CustomerItem = () => {
+export const CustomerItem = ({ post }) => {
   const handleOnClick = () => {
     alert("you have clicked!");
   };
 
+  const { title, text, image } = post;
+
   return (
     <Card className="text-center">
-      <Card.Header>Customer</Card.Header>
+      <Card.Header>
+        <h1>{title}</h1>
+      </Card.Header>
       <Card.Body>
-        <Card.Title>Phone number</Card.Title>
-        <Card.Text>Name Surname</Card.Text>
+        <Card.Title>{text}</Card.Title>
+        <Card.Title>{image}</Card.Title>
         <Button onClick={handleOnClick} variant="primary">
           Delete
         </Button>
