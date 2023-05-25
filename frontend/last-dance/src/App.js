@@ -29,8 +29,8 @@ function App() {
       <Routes>
         <Route element={<CustomerList />} path="/customer-list" />
         <Route element={<NewCustomer />} path="/" />
-        {/* <Route element={<Login />} path="/login" />
-        <Route element={<Register />} path="/register" /> */}
+        <Route element={<Login />} path="/login" />
+        <Route element={<Register />} path="/register" />
       </Routes>
     </>
   );
