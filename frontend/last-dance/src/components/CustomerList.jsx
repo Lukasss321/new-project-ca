@@ -34,7 +34,7 @@ export const CustomerList = () => {
       // setIsLoading(true);
 
       axios
-        .delete(`https://localhost:5000/post/delete/${id}`)
+        .delete(`http://localhost:5000/post/delete/${id}`)
         .then(() => {
           fetchCustomers();
         })

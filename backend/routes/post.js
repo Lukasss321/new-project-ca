@@ -30,8 +30,11 @@ router.post("/post", (req, res) => {
 
 router.delete("/post/delete/:id", (req, res) => {
   const { id } = req.params;
-  console.log("mano id", id);
-  const deleteQuery = "DELETE FROM post WHERE id=?";
+  consolebConnection.query(blogTableQuery, (err) => {
+    if (err) throw err;
+    console.log("mano id", id);
+  });
+  const deleteQuery = "DELETE FROM post WHERE id = ?";
 
   dbConnection.execute(deleteQuery, [id], (err, result) => {
     defaultCallback(err, result, res);
