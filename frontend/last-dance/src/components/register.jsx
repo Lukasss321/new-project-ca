@@ -7,31 +7,58 @@ export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const onHandleSubmit = () => {
+    alert(
+      `${formData1.name} ${formData1.surname} registered with ${formData1.email}`
+    );
+  };
+
+  const [formData1, setFormData1] = useState({
+    name: "",
+    surname: "",
+    email: "",
+    password: "",
+  });
+
+  const handleOnChanges = (event) => {
+    setFormData1({
+      ...formData1,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  //   const onNameChange = () => {
+  //     setName(e.target.value);
+  //   };
   return (
     <div>
       <div>
         <h1>Enter your credentials to register here</h1>
       </div>
-      <form>
+      <form onSubmit={onHandleSubmit}>
         <input
+          name="name"
           type="text"
           placeholder="Your name"
-          onChange={(e) => setName(e.target.value)}
+          onChange={handleOnChanges}
         />
         <input
+          name="surname"
           type="text"
           placeholder="Your last name"
-          onChange={(e) => setSurname(e.target.value)}
+          onChange={handleOnChanges}
         />
         <input
+          name="email"
           type="email"
           placeholder="Your email address"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleOnChanges}
         />
         <input
+          name="password"
           type="password"
           placeholder="Your password"
-          oonChange={(e) => setPassword(e.target.value)}
+          oonChange={handleOnChanges}
         />
         <button className="submit">Login</button>
       </form>

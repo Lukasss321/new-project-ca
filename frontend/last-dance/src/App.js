@@ -27,6 +27,7 @@ function App() {
       </nav>
 
       <Routes>
+        <Route element={<div>Page Nout Found</div>} path="*" />
         <Route element={<CustomerList />} path="/customer-list" />
         <Route element={<NewCustomer />} path="/" />
         <Route element={<Login />} path="/login" />
