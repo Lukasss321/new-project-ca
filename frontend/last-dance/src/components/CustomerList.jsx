@@ -8,7 +8,7 @@ export const CustomerList = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchCustomers = useCallback(() => {
-    console.log("custPosts", custPosts);
+    console.log("custPostsHello", custPosts);
     axios
       .get("http://localhost:5000/post")
       .then((response) => {
@@ -25,6 +25,10 @@ export const CustomerList = () => {
     (id) => {
       console.log("SHIEEET", id);
 
+      // axios.delete(`https://localhost:5000/post/${id}`).then(() => {
+      //   console.log("Delete success?");
+      // });
+
       // Atkomentuot kai bus sukurtas delete API
 
       // setIsLoading(true);
@@ -34,7 +38,7 @@ export const CustomerList = () => {
         .then(() => {
           fetchCustomers();
         })
-        .catch(console.log)
+        .catch((err) => console.log(err))
         .finally(() => {
           setIsLoading(false);
         });
