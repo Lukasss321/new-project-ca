@@ -1,30 +1,45 @@
 import { useState } from "react";
-import { link } from "react-router-dom";
+import { link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const Register = () => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const onHandleSubmit = () => {
-    alert(
-      `${formData1.name} ${formData1.surname} registered with ${formData1.email}`
-    );
-  };
-
-  const [formData1, setFormData1] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     surname: "",
     email: "",
     password: "",
   });
 
+  const navigate = useNavigate();
+
+  const onHandleSubmit = (e) => {
+    e.preventDefault();
+    // POST request i "http://localhost:5000........"
+    axios
+      .post("http://localhost:5000/users", formData)
+      .then((response) => {
+        navigate("/login");
+      })
+      .catch((err) => console.log(err));
+  }; // const onHandleSubmit = () => {
+  //   alert(
+  //     `${formData1.name} ${formData1.surname} registered with ${formData1.email}`
+  //   );
+  // };
+
   const handleOnChanges = (event) => {
-    setFormData1({
-      ...formData1,
+    setFormData({
+      ...formData,
       [event.target.name]: event.target.value,
     });
+  };
+
+  const onNameChange = (e) => {
+    setName(e.target.value);
   };
 
   //   const onNameChange = () => {
@@ -39,7 +54,7 @@ export const Register = () => {
         <input
           name="name"
           type="text"
-          placeholder="Your name"
+          placeholder="Name"
           onChange={handleOnChanges}
         />
         <input
@@ -57,7 +72,7 @@ export const Register = () => {
         <input
           name="password"
           type="password"
-          placeholder="Your password"
+          placeholder="********"
           oonChange={handleOnChanges}
         />
         <button className="submit">Login</button>
