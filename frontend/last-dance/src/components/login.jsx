@@ -46,11 +46,13 @@ export const Login = () => {
       </div>
       <form onSubmit={handleOnSubmit}>
         <input
+          name="email"
           type="email"
           onChange={handleOnChange}
           placeholder="Your email"
         />
         <input
+          name="password"
           type="password"
           onChange={handleOnChange}
           placeholder="Your password"
