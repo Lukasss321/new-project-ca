@@ -1,17 +1,28 @@
-// import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 
-// export const AuthenticationContext = createContext();
+export const AuthenticationContext = createContext({
+  isSignedIn: false,
+  setIsSignedIn: () => {},
+  logout: () => {},
+});
 
-// export const AuthenticationWrapper = ({ children }) => {
-//   const [isSignedIn, setIsSignedIn] = useState(false);
-//   //true
-//   const handleAuthentication = (data) => setIsSignedIn(data);
+export const AuthenticationWrapper = ({ children }) => {
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
-//   return (
-//     <AuthenticationContext.Provider
-//       value={{ isSignedIn, setIsSignedIn: handleAuthentication }}
-//     >
-//       {children}
-//     </AuthenticationContext.Provider>
-//   );
-// };
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem("token");
+    setIsSignedIn(false);
+  }, []);
+
+  return (
+    <AuthenticationContext.Provider
+      value={{
+        isSignedIn,
+        setIsSignedIn: (value) => setIsSignedIn(value),
+        logout: handleLogout,
+      }}
+    >
+      {children}
+    </AuthenticationContext.Provider>
+  );
+};

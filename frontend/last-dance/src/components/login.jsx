@@ -1,11 +1,8 @@
-import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthenticationContext } from "./AuthenticationContext";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const Login = ({ onLogin }) => {
-  // const { setIsSignedIn } = useContext(AuthenticationContext);
-
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -70,6 +67,3 @@ export const Login = ({ onLogin }) => {
 };
 
 export default Login;
-
-// const handleOnSubmit = () => {
-//   navigate("/register");

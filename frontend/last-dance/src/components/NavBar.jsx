@@ -2,12 +2,8 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthenticationContext } from "./AuthenticationContext";
 
-export const NavBar = ({ isLoading, onLogout }) => {
-  const { isSignedIn } = useContext(AuthenticationContext);
-
-  if (isLoading) {
-    return;
-  }
+export const NavBar = () => {
+  const { isSignedIn, logout } = useContext(AuthenticationContext);
 
   return (
     <nav>
@@ -20,18 +16,6 @@ export const NavBar = ({ isLoading, onLogout }) => {
             <li>
               <Link to="/customer-list">Customer-List</Link>
             </li>
-            {/* <li>
-              <Link to="/*">Home</Link>
-            </li> */}
-            {/* <li>
-              <Link to="/posts">Posts</Link>
-            </li>
-            <li>
-              <Link to="/addProduct">Add new product</Link>
-            </li>
-            <li>
-              <Link to="/basket">My Basket</Link>
-            </li> */}
           </>
         ) : (
           <>
@@ -44,7 +28,7 @@ export const NavBar = ({ isLoading, onLogout }) => {
           </>
         )}
       </ul>
-      {isSignedIn && <button onClick={onLogout}>LOGOUT</button>}
+      {isSignedIn && <button onClick={logout}>LOGOUT</button>}
     </nav>
   );
 };

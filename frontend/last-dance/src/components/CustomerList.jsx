@@ -23,15 +23,7 @@ export const CustomerList = () => {
 
   const handleDelete = useCallback(
     (id) => {
-      console.log("SHIEEET", id);
-
-      // axios.delete(`https://localhost:5000/post/${id}`).then(() => {
-      //   console.log("Delete success?");
-      // });
-
-      // Atkomentuot kai bus sukurtas delete API
-
-      // setIsLoading(true);
+      setIsLoading(true);
 
       axios
         .delete(`http://localhost:5000/post/delete/${id}`)
@@ -66,5 +58,3 @@ export const CustomerList = () => {
 };
 
 export default CustomerList;
-{
-}
