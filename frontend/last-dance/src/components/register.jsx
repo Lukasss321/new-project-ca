@@ -20,7 +20,7 @@ export const Register = () => {
     e.preventDefault();
     // POST request i "http://localhost:5000........"
     axios
-      .post("http://localhost:5000/users", formData)
+      .post("http://localhost:5000/users", formData) //register?
       .then((response) => {
         navigate("/login");
       })
