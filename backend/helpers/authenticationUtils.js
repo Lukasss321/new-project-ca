@@ -7,7 +7,7 @@ const verifyToken = (req, res, next) => {
     res.locals.user = user;
     next();
   } catch (e) {
-    res.json({
+    res.status(401).json({
       message: "Invalid token",
     });
   }

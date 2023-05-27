@@ -1,15 +1,15 @@
 import { useContext } from "react";
-import { Outlet, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { AuthenticationContext } from "./AuthenticationContext";
 
-const Protected = () => {
+const Protected = ({ children}) => {
   const { isSignedIn } = useContext(AuthenticationContext);
 
-  if (!isSignedIn) {
-    return <Navigate to="/login" />;
+  if (isSignedIn === false) {
+    return <Navigate to="/login" replace/>;
   }
 
-  return <Outlet />;
+  return children;
 };
 
 export default Protected;

@@ -53,12 +53,6 @@ dbConnection.query(
   }
 );
 
-// const codeacademyConnection = mysql.createConnection({
-//   ...databaseConfig,
-//   database: "codeacademy",
-// });
-
 module.exports = {
   dbConnection,
-  // codeacademyConnection, tasksManagerConnection,
 };

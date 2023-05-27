@@ -2,9 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJtYXJ0eW5hczEyM0BnbWFpbC5jb20iLCJpYXQiOjE2NzkzMzM3NTd9.CQRd79J53QV9iORzoceCD8nDF7LdcMNukY6XrGDMFF4
-
-const { dbConnection } = require("../db"); // dbConnection tasksManagerConnection
+const { dbConnection } = require("../db"); 
 const { defaultCallback } = require("../helpers/dbHelper");
 const { verifyToken } = require("../helpers/authenticationUtils");
 
@@ -12,13 +10,13 @@ const router = express.Router();
 
 router.post("/register", (req, res) => {
   const { body } = req;
-  const { name, email, password } = body;
+  const { name, surname, email, password } = body;
 
   const hashedPassword = bcrypt.hashSync(password, 12);
 
   dbConnection.execute(
-    "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
-    [name, email, hashedPassword],
+    "INSERT INTO users (name, surname, email, password) VALUES (?, ?, ?, ?)",
+    [name, surname, email, hashedPassword],
     (err, result) => defaultCallback(err, result, res)
   );
 });

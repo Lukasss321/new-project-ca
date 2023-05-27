@@ -7,7 +7,7 @@ export const AuthenticationContext = createContext({
 });
 
 export const AuthenticationWrapper = ({ children }) => {
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(undefined);
 
   const handleLogout = useCallback(() => {
     localStorage.removeItem("token");
@@ -18,7 +18,7 @@ export const AuthenticationWrapper = ({ children }) => {
     <AuthenticationContext.Provider
       value={{
         isSignedIn,
-        setIsSignedIn: (value) => setIsSignedIn(value),
+        setIsSignedIn,
         logout: handleLogout,
       }}
     >

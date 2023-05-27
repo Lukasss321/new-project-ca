@@ -4,18 +4,18 @@ import { useState } from "react";
 import axios from "axios";
 
 export const CustomerList = () => {
-  const [custPosts, setCustPosts] = useState([]);
+  const [custPosts, setCustPosts] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchCustomers = useCallback(() => {
-    console.log("custPostsHello", custPosts);
     axios
       .get("http://localhost:5000/post")
       .then((response) => {
         setCustPosts(response.data);
-        setIsLoading(false);
       })
-      .catch((err) => console.log(err))
+      .catch(() => {
+        setCustPosts([]);
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -30,7 +30,7 @@ export const CustomerList = () => {
         .then(() => {
           fetchCustomers();
         })
-        .catch((err) => console.log(err))
+        .catch(console.log)
         .finally(() => {
           setIsLoading(false);
         });
@@ -39,7 +39,7 @@ export const CustomerList = () => {
   );
 
   useEffect(() => {
-    if (!custPosts.length) {
+    if (!custPosts) {
       fetchCustomers();
     }
   }, [fetchCustomers, custPosts]);
@@ -48,10 +48,12 @@ export const CustomerList = () => {
     return <h1>Loading...</h1>;
   }
 
+  if (!isLoading && !custPosts?.length) return <>No customers found.</>
+
   return (
     <ul>
-      {custPosts.map((custPost) => (
-        <CustomerItem post={custPost} onDeleteClick={handleDelete} />
+      {custPosts.map((custPost, index) => (
+        <CustomerItem post={custPost} onDeleteClick={handleDelete} key={index}/>
       ))}
     </ul>
   );

@@ -15,7 +15,6 @@ export const CustomerItem = ({ post, onDeleteClick }) => {
           Delete
         </Button>
       </Card.Body>
-      {/* <Card.Footer className="text-muted"></Card.Footer> */}
     </Card>
   );
 };
