@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthenticationContext } from "./AuthenticationContext";
 import axios from "axios";
 
-export const Login = () => {
-  const { setIsSignedIn } = useContext(AuthenticationContext);
+export const Login = ({ onLogin }) => {
+  // const { setIsSignedIn } = useContext(AuthenticationContext);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -19,11 +19,12 @@ export const Login = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/users", formData)
+      .post("http://localhost:5000/users", formData) //login?
       .then((response) => {
         if (response.data.token) {
           localStorage.setItem("token", response.data.token);
-          setIsSignedIn(true);
+          // setIsSignedIn(true);
+          onLogin();
           navigate("/");
         } else {
           setError(response.data.message);
@@ -58,7 +59,7 @@ export const Login = () => {
           placeholder="Your password"
         />
         <button className="submit">Login</button>
-        {/* {error && <Error>{error}</Error>} */}
+        {/*errror && <div>{error}</div> */}
       </form>
       <p>
         Dont't have an account yet?

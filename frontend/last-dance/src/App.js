@@ -7,20 +7,41 @@ import { Login } from "./components/login";
 import { Register } from "./components/register";
 import { NavBar } from "./components/NavBar";
 import { AuthenticationContext } from "./components/AuthenticationContext";
-import { Protected } from "./components/Protected";
+// import { Protected } from "./components/Protected";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+// import { useNavigate } from "react-router-dom";
 
 function App() {
-  const { setIsSignedIn } = useContext(AuthenticationContext);
-  const [isLoading, setIsLoading] = useState(true);
+  // const { setIsSignedIn } = useContext(AuthenticationContext);
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const navigate = useNavigate();
+  // const [isLoading, setIsLoading] = useState(true);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsSignedIn(false);
   };
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   axios
+  //     .get("http://localhost:5000/token/verify", {
+  //       headers: {
+  //         authorization: "Bearer " + token,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       if (response.data.id) {
+  //         setIsSignedIn(true);
+  //         navigate("/");
+  //       }
+  //     });
+  // }, []);
 
   return (
     <>
-      <NavBar isLoading={isLoading} onLogout={handleLogout} />
+      <NavBar isSignedIn={isSignedIn} onLogout={handleLogout} />
       <Routes>
         <Route element={<Login />} path="/login" />
         <Route element={<Register />} path="/register" />
@@ -28,6 +49,7 @@ function App() {
         {/* <Route element={<Protected isSignedIn={isSignedIn} />}> */}
         <Route element={<CustomerList />} path="/customer-list" />
         <Route element={<NewCustomer />} path="/" />\{/* </Route> */}
+        {/* </Route> */}
       </Routes>
     </>
   );
