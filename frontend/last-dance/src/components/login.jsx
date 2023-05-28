@@ -50,13 +50,13 @@ export const Login = () => {
           name="email"
           type="email"
           onChange={handleOnChange}
-          placeholder="Your email"
+          placeholder="Please Enter Your Email"
         />
         <input
           name="password"
           type="password"
           onChange={handleOnChange}
-          placeholder="Your password"
+          placeholder="Please Enter Your password"
         />
         <button className="submit">Login</button>
           {error && <div>{error}</div>}

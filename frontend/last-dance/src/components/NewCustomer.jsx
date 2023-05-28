@@ -16,7 +16,7 @@ export const NewCustomer = () => {
 
   const handleChange = (event) => {
     setForm({
-      ...form, //image:       //YrasytasTekstas Image
+      ...form,    
       [event.target.name]: event.target.value,
     });
   };

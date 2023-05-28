@@ -40,25 +40,25 @@ export const Register = () => {
         <input
           name="name"
           type="text"
-          placeholder="Name"
+          placeholder="Please Enter Your Name"
           onChange={handleOnChanges}
         />
         <input
           name="surname"
           type="text"
-          placeholder="Your last name"
+          placeholder="Please Enter Your Last Name"
           onChange={handleOnChanges}
         />
         <input
           name="email"
           type="email"
-          placeholder="Your email address"
+          placeholder="Please Enter Your Email Address"
           onChange={handleOnChanges}
         />
         <input
           name="password"
           type="password"
-          placeholder="********"
+          placeholder="Please Enter Your Password ********"
           onChange={handleOnChanges}
         />
         <button className="btnRegister">Login</button>
