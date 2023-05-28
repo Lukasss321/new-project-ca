@@ -42,7 +42,9 @@ dbConnection.query(
         surname VARCHAR(100) NOT NULL,
         email VARCHAR(100) NOT NULL,
         password VARCHAR(255) NOT NULL,
-        primary key (id)
+        post_id INT, -- Foreign key column
+        primary key (id),
+        FOREIGN KEY (post_id) REFERENCES post (id)
 
       )`;
       dbConnection.query(loginTableQuery, (err) => {
