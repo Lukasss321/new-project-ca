@@ -30,7 +30,7 @@ export const NewCustomer = () => {
   };
 
   return (
-    <div style={{ display: "block", width: 700, padding: 30 }}>
+    <div className="add-customer" style={{ display: "block", width: 700, padding: 30 }}>
       <h1>Please enter customer's details:</h1>
       <Form onSubmit={handleOnSubmit}>
         <Form.Group>

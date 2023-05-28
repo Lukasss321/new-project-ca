@@ -31,11 +31,12 @@ export const Register = () => {
   };
 
   return (
-    <div>
+    <div className="auth-form-container">
       <div>
-        <h1>Enter your credentials to register here</h1>
+        <h1>Welcome!</h1>
+        <h3>Enter your credentials to register here</h3>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form className="register-form" onSubmit={handleSubmit}>
         <input
           name="name"
           type="text"
@@ -60,9 +61,9 @@ export const Register = () => {
           placeholder="********"
           onChange={handleOnChanges}
         />
-        <button className="submit">Login</button>
+        <button className="btnRegister">Login</button>
       </form>
-      <p>
+      <p className="p">
         Already have an account ?<a href="/login">Login here</a>
       </p>
     </div>

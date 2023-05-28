@@ -1,38 +1,113 @@
-.App {
+
+.auth-form-container,
+.login-form,
+.register-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
   text-align: center;
+  min-height: 100vh;
+  justify-content: center;
+  background-image: linear-gradient(
+    79deg,
+    #646432,
+    #c1baba,
+    48%,
+    rgba(107, 93, 93, 0.4) 
+   );
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.register-form{
+  border: 5px solid black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+@media screen and (min-width: 600px) {
+  .auth-form-container {
+    padding: 5rem;
+    border: 3px solid black;
+    border-radius:10px;
+    margin: 0.5 rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: none;
+  border-radius: 30px;
+  border: 1px solid black;
+}
+
+button {
+  border: none;
+  background-color: black;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.link-btn {
+  background: none;
+  color: white;
+  text-decoration: underline;
+}
+.btnRegister {
+  padding-bottom: 10px;
+  margin: 1.5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 3px solid black;
+  padding-bottom: 5px;
+  background-image: linear-gradient(
+    79deg,
+    #ebebb8,
+    #a1a1a1,
+    48%,
+    rgba(66, 8, 8, 0.4) 
+   );
 }
+
+.nav-links li {
+  margin-right: 10px;
+}
+
+.nav-links li:last-child {
+  margin-right: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  
+}
+
+.nav-links a:hover {
+  background-color: #eae7e7;
+}
+
+.add-customer{
+  background-color: rgb(233, 231, 231);
+  margin-top: 10px;
+}
+
+.p {
+  font-size: 20px;
+}
+
+

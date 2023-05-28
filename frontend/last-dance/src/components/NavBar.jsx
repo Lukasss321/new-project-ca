@@ -6,8 +6,8 @@ export const NavBar = () => {
   const { isSignedIn, logout } = useContext(AuthenticationContext);
 
   return (
-    <nav>
-      <ul>
+    <nav >
+      <ul className="nav-links">
         {isSignedIn ? (
           <>
             <li>

@@ -39,12 +39,13 @@ export const Login = () => {
   };
   
   return (
-    <div>
+    <div className="auth-form-container">
       <div>
-        <h1>Enter your credentials to login here</h1>
-        <button onClick={() => navigate(-1)}>Go Back</button>
+        <h1>Welcome to Virgis travels the world Ltd!</h1>
+        <h3>Enter your credentials to login here</h3>
+        {/* <button onClick={() => navigate(-1)}>Go Back</button> */}
       </div>
-      <form onSubmit={handleSubmit}>
+      <form  className="login-Form"  onSubmit={handleSubmit}>
         <input
           name="email"
           type="email"
@@ -60,9 +61,9 @@ export const Login = () => {
         <button className="submit">Login</button>
           {error && <div>{error}</div>}
       </form>
-      <p>
+      <p className="p">
         Dont't have an account yet?
-        <a href="/register">Register here</a>
+        <a href="/register">  Register here</a>
       </p>
     </div>
   );

@@ -9,6 +9,7 @@ import { NavBar } from "./components/NavBar";
 import { AuthenticationContext } from "./components/AuthenticationContext";
 import axios from "axios";
 import Protected from "./components/Protected";
+import "./App.css";
 
 function App() {
   const {isSignedIn, setIsSignedIn} = useContext(AuthenticationContext);
